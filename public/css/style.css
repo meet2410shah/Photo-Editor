@@ -1,0 +1,207 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+    z-index: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  header {
+    background-color: #2b2b2b;
+    color: white;
+    padding: 20px 80px;
+  }
+  header a {
+    color: #f1f1f1;
+  }
+  header a:hover {
+    color: #ffffff;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .description {
+    color: black;
+    font-size: 24px;
+    height: 250px;
+    line-height: 35px; 
+  }
+  .bodyContent {
+    padding: 80px;
+  }
+  .learnMore {
+    height: 30px;
+    width: 100px;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 12px;
+    transition: 0.2s ease all;
+    font-size: 22px;
+    color: black;
+    background-color: white;
+  }
+  .learnMore:hover {
+    color: white;
+    background-color: #2b2b2b;
+  }
+  .openSource{
+    padding: 20px 80px;
+  }
+  .centerMe {
+    text-align: center;
+  }
+  .selectDrop {
+    border: 5px dashed gray;
+    height: 200px;
+    width: 700px;
+    border-radius: 40px;
+    margin: 50px auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+  .selectDropP {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+  }
+  input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    width: 300px;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+}
+.custom-file-upload:hover {
+    color: white;
+    background-color: #2b2b2b;
+}
+.snapShot {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    width: 300px;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+    background-color: white;
+    height: 50px;
+    z-index: 4;
+}
+.snapShot:hover {
+    color: white;
+    background-color: #2b2b2b;
+}
+.camera {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 400px;
+    left: 350px;
+}
+.hideMe {
+    display: none;
+}
+.myCanvas {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    top: 450px;
+    left: 350px;
+}
+.closeCamera {
+    display: flex;
+    justify-content: space-between;
+    z-index: 40;
+    position: absolute;
+    top: 930px;
+    left: 350px;
+}
+#uploadIt {
+    margin-left: 40px;
+}
+.BlackLayer {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 2;
+}
+.slidecontainer {
+    width: 100%;
+    margin-bottom: 10px;
+    }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 500px;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 10px;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 25px;
+    background: #2b2b2b;
+    cursor: pointer;
+
+}
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 50px;
+    background: #2b2b2b;
+    cursor: pointer;
+  }
+  .Changer {
+      padding: 80px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+  .mybtn {
+    border: 1px solid #ccc;
+    display: inline-block;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+    background-color: white;
+    z-index: 4;
+    height: 30px;
+    width: 50px;
+    opacity: 0;
+  }
+  .imageShow {
+    width: 500px;
+    border: 5px dashed #ccc;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

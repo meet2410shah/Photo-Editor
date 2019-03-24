@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#428bca">
+  <title>Photo Editor</title>
+  <!--Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!--My Css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../public/css/style.css" type="text/css">
+  <style>
+  * {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+    z-index: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  header {
+    background-color: #2b2b2b;
+    color: white;
+    padding: 20px 80px;
+  }
+  header a {
+    color: #f1f1f1;
+  }
+  header a:hover {
+    color: #ffffff;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .description {
+    color: black;
+    font-size: 24px;
+    height: 250px;
+    line-height: 35px; 
+  }
+  .bodyContent {
+    padding: 80px;
+  }
+  .learnMore {
+    height: 30px;
+    width: 100px;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 12px;
+    transition: 0.2s ease all;
+    font-size: 22px;
+    color: black;
+    background-color: white;
+  }
+  .learnMore:hover {
+    color: white;
+    background-color: #2b2b2b;
+  }
+  .openSource{
+    padding: 20px 80px;
+  }
+  .centerMe {
+    text-align: center;
+  }
+  .selectDrop {
+    border: 5px dashed gray;
+    height: 500px;
+    width: 900px;
+    border-radius: 40px;
+    margin: 50px auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+  .selectDropP {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
+  }
+  input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 12px 12px;
+    width: 350px;
+    height: 50px;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 30px;
+}
+.custom-file-upload:hover {
+    color: white;
+    background-color: #2b2b2b;
+}
+.snapShot {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    width: 300px;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+    background-color: white;
+    height: 50px;
+    z-index: 4;
+    margin-left: 25px;
+}
+.snapShot:hover {
+    color: white;
+    background-color: #2b2b2b;
+}
+.camera {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    z-index: 4;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 400px;
+    left: 350px;
+}
+.hideMe {
+    display: none;
+}
+.myCanvas {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    top: 450px;
+    left: 350px;
+}
+.closeCamera {
+    display: flex;
+    justify-content: space-between;
+    z-index: 40;
+    position: absolute;
+    top: 930px;
+    left: 350px;
+}
+#uploadIt {
+    margin-left: 40px;
+}
+.BlackLayer {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 2;
+}
+.slidecontainer {
+    width: 100%;
+    margin-bottom: 10px;
+    }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 500px;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 10px;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 25px;
+    background: #2b2b2b;
+    cursor: pointer;
+
+}
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 50px;
+    background: #2b2b2b;
+    cursor: pointer;
+  }
+  .Changer {
+      padding: 80px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+  .mybtn {
+    border: 1px solid #ccc;
+    display: inline-block;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    text-align:center;
+    background-color: white;
+    z-index: 4;
+    height: 30px;
+    width: 50px;
+    opacity: 0;
+  }
+  .imageShow {
+    width: 500px;
+    border: 5px dashed #ccc;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  </style>
+</head>
+<body>
+  <div class="content" data-role="page">
+    <header>
+      <h1 class="title">
+        <a href="#">Photo Editor</a>
+      </h1>
+    </header>
+    <div class="bodyContent">
+      <p class="description">
+        A pure JavaScript photo Editor
+        <br>
+        A new way to design your photo
+        <br>
+        Edit you photos online free
+      </p>
+      <a href="#" class="learnMore">Learn More</a>
+    </div>
+    <div class="Photo Editor">
+      <h1 class="title centerMe">
+        A Photo Editor.
+      </h1>
+      <div id="drop_zone" class="selectDrop" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+        <p class="selectDropP">
+          Select or drag in an image to start!
+        </p>
+        <%= typeof msg != 'undefined' ? msg : '' %>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div>
+                <label class="custom-file-upload">
+                  <input name="myImage" type="file">
+                  Choose an image Upload
+                </label>
+                </div>
+                <div>
+                  <button type="submit" class="snapShot">Upload</button>
+                </div>          
+                <!--Access to Camera-->
+                <div>
+                  <button onclick="takeShot();" class="snapShot">Take a shot</button>
+                </div>
+                <!--End Access to Camera-->
+            </div>
+        </form>
+        <br>
+      </div>   
+    </div>
+    <!--Camera-->
+    <div class="camera hideMe" id="camera">
+      <button id="snap" class="snapShot">Snap It</button>
+      <video id="video" width="640px" height="480px" autoplay></video>
+    </div>
+    <div class="myCanvas" style="z-index: 3;" id="myCanvas">
+        <canvas id="canvas" class="hideMe" width="640px" height="480px"></canvas>
+    </div>
+    <div class="closeCamera">
+      <button class="snapShot hideMe" id="closeCamera" onclick="closeCamera();">Close</button>
+      <button class="snapShot hideMe" id="uploadIt">Upload</button>
+    </div>
+    <!--End Camera--> 
+  </div>
+  <div>
+    <h1 class="title centerMe">
+      Editor
+    </h1>
+    <div class="Changer">
+      <form action="">
+        <div class="slidecontainer">
+          <p>Resize</p>
+          <input type="range" min="1" max="100" value="50" class="slider" id="Resize">
+        </div>
+        <div class="slidecontainer">      
+          <p>Brightness</p>
+          <input type="range" min="1" max="100" value="50" class="slider" id="Brightness">
+        </div>
+        <div class="slidecontainer">      
+          <p>Contrast</p>
+          <input type="range" min="1" max="100" value="0" class="slider" id="Contrast">
+        </div>
+        <div class="slidecontainer">      
+          <p>Saturation</p>
+          <input type="range" min="1" max="100" value="50" class="slider" id="Saturation">
+        </div>
+        <div class="slidecontainer">      
+          <p>Rotate</p>
+          <input type="range" min="1" max="100" value="0" class="slider" id="Rotate">
+        </div>
+        <div>
+          <button class="mybtn">
+            <p>Crop</p>
+          </button>
+        </div>
+        <br>
+        <br>
+        <button type="reset" class="snapShot">Reset</button>
+      </form>
+      <div class="imageShow">
+        <% if (typeof file == 'undefined') { %>
+          <p>
+            No Image Selected
+          </p>
+        <% } else { %>
+          <img src="<%= typeof file != 'undefined' ? file : '' %>" alt="" height="500" class="responsive-img">
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <div class="BlackLayer hideMe"></div>
+  <script src="../public/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
